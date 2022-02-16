@@ -10,10 +10,10 @@ async function bootstrap() {
   app.enableCors();
 
   const config = new DocumentBuilder()
-    .setTitle('registro_notas_crud')
+    .setTitle('calificaciones_crud')
     .setDescription('API CRUD para el registro de notas')
     .setVersion('1.0')
-    .addTag('registro_nota')
+    .addTag('calificacion')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
