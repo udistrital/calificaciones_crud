@@ -51,6 +51,8 @@ steps:
 - name: nest_build
   image: node:current-alpine
   commands:
+  - npm -v
+  - node -v
   - npm i
   - npm run build
   - ls
