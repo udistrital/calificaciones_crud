@@ -16,8 +16,8 @@ export class Nota extends Document {
     @Prop({required: true})
     registro_id: string
     
-    @Prop({required: true})   //Object
-    valor_nota: string
+    @Prop({type: Object})   //Object
+    valor_nota
     
     @Prop({required: true})
     nota_definitiva: number

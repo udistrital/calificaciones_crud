@@ -15,7 +15,7 @@ export class NotaDto{
     readonly registro_id: string;
     
     @ApiProperty()
-    readonly valor_nota: string; //Object
+    readonly valor_nota: Object; //Object
     
     @ApiProperty()
     readonly nota_definitiva: number;

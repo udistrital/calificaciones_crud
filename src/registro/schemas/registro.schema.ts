@@ -28,8 +28,8 @@ export class Registro extends Document {
     @Prop({required: true})
     estado_registro_id: string
 
-    @Prop({required: true}) //Object
-    estructura_nota: string
+    @Prop({type: Object}) //Object
+    estructura_nota
 
     @Prop({required: true})
     activo: boolean
