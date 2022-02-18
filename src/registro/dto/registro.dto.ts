@@ -27,7 +27,7 @@ export class RegistroDto{
     readonly estado_registro_id: string;
 
     @ApiProperty()
-    readonly estructura_nota: string; //Object
+    readonly estructura_nota: Object; //Object
 
     @ApiProperty()
     activo: boolean;
