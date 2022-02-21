@@ -17,16 +17,16 @@ export class Registro extends Document {
     codigo: string
 
     @Prop({required: true})
-    periodo_id: string
+    periodo_id: number  //pk sql
 
     @Prop({required: true})
-    nivel_id: string
+    nivel_id: number    //pk sql
 
     @Prop({required: true})
     espacio_academico_id: string
 
     @Prop({required: true})
-    estado_registro_id: string
+    estado_registro_id: number  //pk sql
 
     @Prop({type: Object}) //Object
     estructura_nota

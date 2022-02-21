@@ -11,7 +11,7 @@ export class Nota extends Document {
     descripcion: string
 
     @Prop({required: true})
-    estudiante_id: string
+    estudiante_id: number   //pk sql
     
     @Prop({required: true})
     registro_id: string
@@ -32,7 +32,7 @@ export class Nota extends Document {
     fallas: number
     
     @Prop({required: true})
-    observacion_nota_id: string
+    observacion_nota_id: number //pk sql
     
     @Prop({required: true})
     activo: boolean
