@@ -21,10 +21,10 @@ export class RegistroController {
         }
         res.status(HttpStatus.OK).json(
             {
-                Data: registro,
-                Message: "Registration Successfull",
+                Success: true,
                 Status: "201",
-                Success: true
+                Message: "Registration successful",
+                Data: registro
             }
         );
     }
@@ -32,7 +32,7 @@ export class RegistroController {
     @Get()
     async getAll(@Res() res, @Query() filterDto: FilterDto){
         const registro = await this.registroService.getAll(filterDto);
-        if(!registro){
+        if(!registro || registro.length == 0){
             throw new HttpException({
                 Success: false,
                 Status: "404",
@@ -42,10 +42,10 @@ export class RegistroController {
         }
         res.status(HttpStatus.OK).json(
             {
-                Data: registro,
-                Messagge: "Registration Sucessfull",
-                Status: "201",
-                Success: true
+                Success: true,
+                Status: "200",
+                Message: "Request successful",
+                Data: registro
             }
         );
     }
@@ -63,10 +63,10 @@ export class RegistroController {
         }
         res.status(HttpStatus.OK).json(
             {
-                Data: registro,
-                Message: "Registration Successfull",
-                Status: "201",
-                Success: true
+                Success: true,
+                Status: "200",
+                Message: "Request successful",
+                Data: registro
             }
         );
     }
@@ -84,10 +84,10 @@ export class RegistroController {
         }
         return res.status(HttpStatus.OK).json(
             {
-                Data: registro,
-                Message: "Update Successfull",
+                Success: true,
                 Status: "200",
-                Success: true
+                Message: "Update successful",
+                Data: registro
             }
         );
     }
@@ -105,12 +105,12 @@ export class RegistroController {
         }
         return res.status(HttpStatus.OK).json(
             {
+                Success: true,
+                Status: "200",
+                Message: "Delete successful",
                 Data: {
                     _id: id
-                },
-                Message: "Registration Succesfull",
-                Status: "201",
-                Success: true
+                }
             }
         );
     }
