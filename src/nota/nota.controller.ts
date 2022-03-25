@@ -32,7 +32,7 @@ export class NotaController {
     @Get()
     async getAll(@Res() res, @Query() filterDto: FilterDto){
         const nota = await this.notaService.getAll(filterDto);
-        if(!nota){
+        if(!nota || nota.length == 0){
             throw new HttpException({
                 Success: false,
                 Status: "404",
