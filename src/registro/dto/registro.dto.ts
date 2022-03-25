@@ -15,16 +15,16 @@ export class RegistroDto{
     readonly codigo: string;
 
     @ApiProperty()
-    readonly periodo_id: string;
+    readonly periodo_id: number;    //pk sql
 
     @ApiProperty()
-    readonly nivel_id: string;
+    readonly nivel_id: number;  //pk sql
 
     @ApiProperty()
     readonly espacio_academico_id: string;
 
     @ApiProperty()
-    readonly estado_registro_id: string;
+    readonly estado_registro_id: number;    //pk sql
 
     @ApiProperty()
     readonly estructura_nota: Object; //Object

@@ -9,7 +9,7 @@ export class NotaDto{
     readonly descripcion: string;
     
     @ApiProperty()
-    readonly estudiante_id: string;
+    readonly estudiante_id: number; //pk sql
     
     @ApiProperty()
     readonly registro_id: string;
@@ -30,7 +30,7 @@ export class NotaDto{
     readonly fallas: number;
     
     @ApiProperty()
-    readonly observacion_nota_id: string;
+    readonly observacion_nota_id: number;   //pk sql
     
     @ApiProperty()
     activo: boolean;
