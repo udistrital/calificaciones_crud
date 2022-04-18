@@ -13,8 +13,8 @@ export class Nota extends Document {
     @Prop({required: true})
     estudiante_id: number   //pk sql
     
-    @Prop({required: true})
-    registro_id: string
+    @Prop({type: Object})
+    registro_id
     
     @Prop({type: Object})   //Object
     valor_nota

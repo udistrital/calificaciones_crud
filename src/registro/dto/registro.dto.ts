@@ -30,6 +30,12 @@ export class RegistroDto{
     readonly estructura_nota: Object; //Object
 
     @ApiProperty()
+    readonly finalizado: boolean
+
+    @ApiProperty()
+    readonly modificacion_extemporanea: boolean;
+
+    @ApiProperty()
     activo: boolean;
 
     @ApiProperty()

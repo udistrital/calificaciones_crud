@@ -32,6 +32,12 @@ export class Registro extends Document {
     estructura_nota
 
     @Prop({required: true})
+    finalizado: boolean
+    
+    @Prop({required: true})
+    modificacion_extemporanea: boolean
+
+    @Prop({required: true})
     activo: boolean
 
     @Prop({required: true})

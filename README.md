@@ -65,7 +65,7 @@ Pruebas unitarias
 
 # Modelo de Datos
 
-![Modelo de datos Registro notas](/database/calificaciones_v2.png)
+![Modelo de datos Registro notas](/database/calificaciones_v3.png)
 
 # Licencia
 
