@@ -56,7 +56,10 @@ export class NotaService {
             if(notaDto.registro_id != undefined){
                 await this.registroModel.findById(notaDto.registro_id);    //check if registro existe
             }
-            notaDto.fecha_modificacion = new Date();
+            await this.notaModel.findById(id).then(nota => {    // asegurar inmutacion fecha_creacion
+                notaDto.fecha_creacion = nota.fecha_creacion;
+                notaDto.fecha_modificacion = new Date();
+            })
             await this.notaModel.findByIdAndUpdate(id, notaDto, {new: true}).exec();
             return await this.notaModel.findById(id).exec();
         }
