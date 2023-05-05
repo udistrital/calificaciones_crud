@@ -47,7 +47,10 @@ export class RegistroService {
 
     async put(id: string, registroDto: RegistroDto): Promise<Registro>{
         try{
-            registroDto.fecha_modificacion = new Date();
+            await this.registroModel.findById(id).then(registro => {    // asegurar inmutacion fecha_creacion
+                registroDto.fecha_creacion = registro.fecha_creacion;
+                registroDto.fecha_modificacion = new Date();
+            })
             await this.registroModel.findByIdAndUpdate(id, registroDto, {new: true}).exec();
             return await this.registroModel.findById(id).exec();
         }
