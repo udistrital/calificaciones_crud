@@ -7,14 +7,17 @@ import { Model } from 'mongoose';
 
 import { FilterDto } from "../filters/dto/filter.dto";
 import { FiltersService } from "../filters/filters.service";
+import { Registro } from 'src/registro/schemas/registro.schema';
 
 @Injectable()
 export class NotaService {
-    constructor(@InjectModel(Nota.name) private readonly notaModel: Model<Nota>){}
+    constructor(@InjectModel(Nota.name) private readonly notaModel: Model<Nota>,
+    @InjectModel(Registro.name) private readonly registroModel: Model<Registro>){}
 
     async post(notaDto: NotaDto): Promise<Nota>{
         try{
             const nota = new this.notaModel(notaDto);
+            await this.registroModel.findById(nota.registro_id);    //check if registro existe
             nota.fecha_creacion = new Date();
             nota.fecha_modificacion = new Date();
             return await nota.save();
@@ -38,7 +41,10 @@ export class NotaService {
 
     async getById(id: string): Promise<Nota>{
         try{
-            return await this.notaModel.findById(id).exec();
+            var nota = await this.notaModel.findById(id).exec();
+            var registro = await this.registroModel.findById(nota.registro_id);    //check if registro existe
+            nota.registro_id = registro;    // reemplaza registro_id por el registro
+            return  nota;
         }
         catch(error){
             return null;
@@ -47,7 +53,13 @@ export class NotaService {
 
     async put(id: string, notaDto: NotaDto): Promise<Nota>{
         try{
-            notaDto.fecha_modificacion = new Date();
+            if(notaDto.registro_id != undefined){
+                await this.registroModel.findById(notaDto.registro_id);    //check if registro existe
+            }
+            await this.notaModel.findById(id).then(nota => {    // asegurar inmutacion fecha_creacion
+                notaDto.fecha_creacion = nota.fecha_creacion;
+                notaDto.fecha_modificacion = new Date();
+            })
             await this.notaModel.findByIdAndUpdate(id, notaDto, {new: true}).exec();
             return await this.notaModel.findById(id).exec();
         }
@@ -64,4 +76,5 @@ export class NotaService {
             return null;
         };
     }
+
 }
